@@ -6,7 +6,7 @@
         <!--<a href="/polls/{{ question.id }}/">{{ question.question_text }}</a>-->
 
         <!--Since, we have defined names in path() we can utilize it to replace appropriate url path-->
-        <a href="{% url 'polls:detail' question_id %}"
+        <a href="{% url 'polls:detail' question.id %}"
             >{{ question.question_text}}</a
         >
     </li>
