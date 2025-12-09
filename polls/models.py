@@ -3,12 +3,6 @@ from django.db import models
 
 # Create your models here.
 
-# class Person(models.Model):
-#     name = models.CharField(max_length=100, default="temp")
-#     age = models.IntegerField(default=18)
-#     email = models.EmailField(blank=True)
-#     address = models.TextField(null=True)
-
 class Question(models.Model):
     """
         It’s important to add __str__() methods to your models, not only for your own convenience
