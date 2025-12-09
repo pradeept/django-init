@@ -1,0 +1,23 @@
+li a {
+    color: green;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+li {
+    padding-inline: 10px;
+    background-color: white;
+}
+
+body {
+    background: white url("images/background.jpg") no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
