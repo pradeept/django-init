@@ -1,4 +1,3 @@
-from typing import override
 from django.db import models
 
 # Create your models here.
