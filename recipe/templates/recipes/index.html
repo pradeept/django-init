@@ -2,7 +2,7 @@
 <span></span>
 {% block content %}
 
-<div class="card bg-base-100 px-10 shrink-0 shadow-2xl">
+<div class="bg-base-100 px-10 shrink-0 shadow-2xl">
     {% if error_message %}
     <div role="alert" class="alert alert-error">
         <svg
@@ -21,25 +21,38 @@
         <span>{{error_message}}</span>
     </div>
     {% endif %}
-    <form class="card-body" method="post" enctype="multipart/form-data">
+    <form
+        class="card-body max-w-md mx-auto"
+        method="post"
+        enctype="multipart/form-data"
+    >
         {% csrf_token %}
-        <fieldset class="fieldset">
+        <fieldset class="fieldset space-y-3">
             <label class="label">Recipe Name</label>
             <input
                 type="text"
-                class="input"
+                class="input w-full"
                 placeholder="Recipe Name"
                 name="recipe_name"
             />
+
             <label class="label">Recipe Description</label>
             <textarea
-                class="textarea"
+                class="textarea w-full"
                 placeholder="Recipe Description"
                 name="recipe_description"
             ></textarea>
+
             <label class="label">Recipe Image</label>
-            <input type="file" class="file-input" name="recipe_image" />
-            <button class="btn btn-neutral mt-4" type="submit">Submit</button>
+            <input type="file" class="file-input w-full" name="recipe_image" />
+
+            <!-- Button is centered and not full width -->
+            <button
+                class="btn btn-neutral w-auto self-center mt-4"
+                type="submit"
+            >
+                Submit
+            </button>
         </fieldset>
     </form>
 
@@ -75,6 +88,13 @@
                             href="{% url 'recipe:delete_recipe' recipe.id %}"
                             class="btn btn-soft btn-error"
                             >Delete</a
+                        >
+                    </td>
+                    <td>
+                        <a
+                            href="{% url 'recipe:update_recipe' recipe.id %}"
+                            class="btn btn-soft btn-success"
+                            >Update</a
                         >
                     </td>
                 </tr>

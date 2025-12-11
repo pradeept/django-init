@@ -1,6 +1,6 @@
 from django.db.models import ObjectDoesNotExist
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 # Create your views here.
 from .models import Recipe
@@ -20,6 +20,24 @@ def index(request):
         return redirect("recipe:index")
     recipes = Recipe.objects.all()
     return render(request, "recipes/index.html", {'recipes':recipes})
+
+def update_recipe(request, id):
+    recipe = get_object_or_404(Recipe, pk=id)
+
+    if request.method == "POST":
+
+        data = request.POST
+        image = request.FILES.get("recipe_image")
+        recipe.recipe_name = data.get('recipe_name')
+        recipe.recipe_description = data.get('recipe_description')
+
+        if image:
+            recipe.recipe_image = image
+        recipe.save()
+        return redirect("recipe:index")
+
+    return render(request, "recipes/update.html", {"recipe":recipe})
+
 
 def delete_recipe(request, id):
     try:

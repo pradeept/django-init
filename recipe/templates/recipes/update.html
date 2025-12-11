@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title %} Update | Recipe {% endblock %}
+<span></span>
+{% block content %}
+
+<div class="max-w-md mx-auto mt-8 p-6 bg-base-100 shadow-xl rounded-xl">
+    <form method="post" enctype="multipart/form-data" class="space-y-4">
+        {% csrf_token %}
+
+        <div class="form-control">
+            <label class="label">Recipe Name</label>
+            <input
+                type="text"
+                class="input input-bordered w-full"
+                placeholder="Recipe Name"
+                name="recipe_name"
+                value="{{ recipe.recipe_name }}"
+            />
+        </div>
+
+        <div class="form-control">
+            <label class="label">Recipe Description</label>
+            <textarea
+                class="textarea textarea-bordered w-full"
+                placeholder="Recipe Description"
+                name="recipe_description"
+            >
+{{ recipe.recipe_description }}</textarea
+            >
+        </div>
+
+        <div class="form-control">
+            <label class="label">Recipe Image</label>
+            <input
+                type="file"
+                class="file-input file-input-bordered w-full"
+                name="recipe_image"
+            />
+        </div>
+
+        <!-- Center the button -->
+        <div class="flex justify-center">
+            <button class="btn btn-neutral" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
