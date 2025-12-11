@@ -19,6 +19,12 @@ def index(request):
         )
         return redirect("recipe:index")
     recipes = Recipe.objects.all()
+
+    search_query = request.GET.get('search')
+
+    if search_query:
+        recipes = recipes.filter(recipe_name__icontains=search_query)
+
     return render(request, "recipes/index.html", {'recipes':recipes})
 
 def update_recipe(request, id):
