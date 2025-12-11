@@ -22,7 +22,6 @@ def index(request):
     return render(request, "recipes/index.html", {'recipes':recipes})
 
 def delete_recipe(request, id):
-    # delete functionality goes here!
     try:
         recipe = Recipe.objects.get(pk=id)
     except Recipe.DoesNotExist:
